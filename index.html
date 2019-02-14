@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile Ui Design</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body onload="startTime();">
+    <div class="mobile">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="screen">
+            <img src="screen.jpeg" alt="Mountain">
+            <h2>
+                15:40<span>AM</span> <br>
+                <span>14th Feb, 2019</span>
+            </h2>
+                <ul>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-address-book-o" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-comment-o" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-picture-o" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-camera" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-chrome" aria-hidden="true"></i></li>
+                </ul>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.bottom').click(function () {
+                $('.screen').toggleClass('active');
+            });
+        });
+
+        function startTime() {
+            let today = new Date();
+            let clock = today.toLocaleString('ro-RO', {hour: '2-digit', minute: '2-digit'});
+            let date  = today.toLocaleString('ro-RO', {weekday: 'short', year: 'numeric', day: 'numeric', month: 'short'});
+            let h = today.getHours();
+            let timezone = (h >= 12) ? 'PM' : 'AM';
+
+            document.querySelector('h2').innerHTML = clock+'<span>'+timezone+'</span><br>'+'<span>'+date+'</span>';
+            setTimeout(startTime, 500);
+        }
+    </script>
+</body>
+</html>
